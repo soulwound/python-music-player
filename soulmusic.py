@@ -76,7 +76,7 @@ class Player:
         for files in os.walk(folder):
             for filename in files:
                 self.__init__(self, filename, folder)
-                
+
     # volume change func
     def change_volume(self, master):
         pg.mixer.music.set_volume(self.volumeControl.get()/100)
@@ -106,6 +106,7 @@ class Player:
             pg.mixer.music.load(f'{self.tracks_path}{self.playing_now}')
             pg.mixer.music.play()
         self.playingTitle.config(text=self.playing_now[:-4])
+        self.playControlBtn.config(image=self.play_control_btn_pause, command=self.pause_track)
 
     # go to next
     def change_to_next_track(self):
@@ -118,6 +119,7 @@ class Player:
             pg.mixer.music.load(f'{self.tracks_path}{self.playing_now}')
             pg.mixer.music.play()
         self.playingTitle.config(text=self.playing_now[:-4])
+        self.playControlBtn.config(image=self.play_control_btn_pause, command=self.pause_track)
 
     # play chosen track in tracklist
     def play_selected_track(self):
